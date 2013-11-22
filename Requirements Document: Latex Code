@@ -1,0 +1,117 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+%opening
+\title{Password Security\\ CSCE 499 Requirements Document}
+\author{Daniel Case\\ BS CS/Math\\ \\Faculty Advisor: Dr. George Hauser}
+\renewcommand{\today}{October 29, 2013}
+\begin{document}
+\maketitle
+
+\newpage
+
+\begin{abstract}
+Understanding the methods and techniques of password cracking is crucial in attempting to safeguard against successful attacks. This project will focus on implementing a software package and command line application that will focus on cryptographic hash functions for password storage and several brute-force password cracking algorithms.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Computer security is an important issue in software engineering. Entire systems can be compromised from the smallest errors or misuse of information regarding password security. This project aims to introduce a user to a command-line driven software application that can simulate a variety of password cracking methods. This toolkit will be designed as an academic software package whose purpose will be to explore what it means to have a strong password or to see the consequences of having a weaker one.
+
+In most if not all operating systems, user passwords are not stored locally in a directory or in a text file but rather the value of the password once put through a cryptographic hash function is stored.\textsuperscript{[8]} A hash function is any algorithm that maps data of variable length to data of a fixed length.\textsuperscript{[9]} The values that are returned are referred to as hashes. A cryptographic hash function in particular uses this one-to-one mathematical function in order to mask the data and make it so any small change in input will drastically alter the hash value, making it more secure. The concept behind password cracking on the other hand is a little more straight-forward: find the password.
+
+This project will focus on three particular methods of password cracking. All of which can be considered implementations of a brute-force approach, however with different ideals. The first algorithmic method is simply called a Brute-Force Attack. This technique attempts to break the cipher by trying every possible key value. The feasibility of a Brute-Force attack depends on the key length of the hash value, as well as the computational power available to the attacker.\textsuperscript{[1]} The next technique that will be used in this project is known as the Dictionary attack. Like the Brute-Force attack, it also will try combinations. However, the dictionary attack uses a list of known letters, symbols, and words in a look-up table hoping to speed up the process.
+
+The last technique that will be used in this project will be the use of a tool called a Rainbow Table. A Rainbow Table is a precomputed table for reversing cryptographic hash functions. It stores a series of precomputed hash values and will use these values in order to compare to the guessed password hash.\textsuperscript{[9]}
+
+
+\section{Project Description}
+\subsection{Functional Objectives}
+As mentioned in the introduction, the primary functional objective of this project is to produce a toolkit for users to learn more about password strength and security. This toolkit will be designed as a command line application with a set of libraries and software packages meant for implementing several cryptographic hash functions and some of the more common brute-force methods of password cracking.
+
+Upon launching the application, the client can type in a password and then choose a hash function. The different cryptographic hash functions that will be supported are MD5, Blowfish, or SHA-1.  The chosen function will then hash and salt the typed password and store that value locally in a directory. The user can then select any one of three different brute-force methods for password cracking; either the common Brute-Force approach, a Dictionary attack, or the use of a Rainbow Table. A log file will be generated that will contain information regarding how many attempts were made, what hashes were tried, and whether or not the attack was successful.
+
+\subsection{Educational Objectives}
+The educational objectives for this project is to learn how to implement the brute-force attack, dictionary attack, and Rainbow tables used in password cracking, to understand how password management systems work on Windows OS, and how cryptographic hash functions generate hashes and salts. The educational goals will be completed when the toolkit is developed to the point where the password cracking techniques are implemented and log file correctly outputs the data gained during an attempted attack.
+
+\section{Development Resources}
+For this project, the tools necessary for development are not difficult to acquire. The integrated development environments that can be used for coding are either free or open source. The associated libraries for the cryptographic hash functions are supported in the C libraries\textsuperscript{[5][6][7]}, and there are copious on-line resources regarding the study of password management and password cracking techniques.
+
+\section{Requirements}
+\subsection{Performance Requirements}
+As a toolkit, this project will be expected to perform the functions as outlined in the Functional Objectives section. It must be able to take the user's typed password and hash it using the chosen cryptographic function, and it must be able to store the hash locally as well as output the log file with the appended data.
+
+Password cracking takes exponential time.\textsuperscript{[3]} In terms of timeliness, the highest cost is the time it takes to crack the password. The toolkit must be able to use the given algorithms efficiently in order to spend less time for each comparison.
+
+\subsection{Design Constraints}
+The toolkit will be developed using Visual Studio, and coded in C. It will be designed for use with Windows OS, but can be compiled on any machine with a C compiler.
+
+The project will be a command line application, and wont need a large amount of space or memory in order to carry out the password cracking techniques. However a faster CPU or more memory can be beneficial to the amount of hash values that are checked\textsuperscript{[1]}, but are not going to be necessary for this project.
+
+Development time is a major factor since password cracking takes an enormous amount of time while attempting a crack. Testing a series of simple passwords could take days, while lengthier passwords can take weeks.\textsuperscript{[3]}
+
+\subsection{User Characteristics and Assumptions}
+This toolkit will be designed for anyone with an interest in password security and password cracking. Being designed as a series of software packages in a console application , it will be primarily used as a learning tool. Therefore, an assumption made on the user's end is that they would at least have some knowledge on how to run command line applications as well as understand a little about what to expect from a program designed for cracking passwords. That is to say, they should know how long it can take for a test, and that not all attacks can be successful.
+
+\subsection{Security}
+This project will in no way be designed such that a user's privacy or security will be compromised. Given the user characteristics and the assumptions made about the users, all usage of the program should be intended for academic purposes.
+
+\subsection{Reliability}
+This program will be reliable in that it will be designed so it will not crash given strange input, or other user-made mistakes. It should be able to perform all basic functionality as mentioned beforehand, and be able to provide a stable termination if any process or method call is interrupted.
+
+\subsection{Portability}
+The project will be coded and designed for Windows, however it will be coded using C. So any computer whose operating system supports a C compiler can run this software package. The three cryptographic hash functions that can be selected by the user via the console, MD5, Blowfish, and SHA-1, are all supported within the C/C++ library, after some requisite packages are downloaded.\textsuperscript{[5][6][7]}
+
+\subsection{Maintainability}
+The software designed for this project will be modular enough so that if other hash functions or password cracking techniques are discovered it should be added on as a separate library.
+
+\subsection{External Interface and Use Case Model}
+This toolkit will also be designed in a way that should be easy and accessible to the user. Being a command-line application, the user will be prompted to enter a password of their choice and then several choices of different hash functions can be selected. Once the function is chosen, the typed password will be hashed and stored in a text file locally in a directory. The user is then shown another text-based menu in which they can select which password cracking technique they would like to try. Once the method is chosen, the attack will attempt to get the password and a log file will be generated depicting which passwords or hash values were used, the time in which the attack started and ended, and whether or not the attack was successful. In case of a user-generated interrupt or a power failure, the program should exit with an error code and the log file should be appended with the same error code.
+
+\textbf{Use Case: User types in a password and chooses a hash function}
+
+\begin{itemize}
+\item Step 1: User starts the software application and the console is shown
+\item Step 2: User is prompted by the software application to type in a password in the console
+\item Step 3: User types in a password and presses the enter key
+\item Step 4: A small table is shown in the console containing the choices for the hashing functions [MD5, Blowfish, SHA-1]
+\item Step 5: User chooses the hashing function
+\item Step 6: The typed passwords is hashed and the value is stored in a text file. User is alerted to the location of the text file.
+\item End of Scenario
+\end{itemize}
+
+\section{Task Breakdown}
+The following is a list of tasks that need to be fulfilled in order to complete the project. A time-table can be seen in the Gantt chart section.
+
+\begin{itemize}
+\item Research: Research needs to be done regarding the password cracking techniques; Brute-Force, Dictionary attack, and Rainbow Tables.
+\item Research: Research needs to be done regarding cryptographic hash functions and how they perform hashes.
+\item Coding: Practicing coding in C, such as a simple function that produces various hashes. Also practice File I/O, given that the log file will need to be stored.
+\item Early Implementation: Work needs to be done on the software application as early as possible.
+\item Testing: Once a bare-bones version of the application is mostly written, testing password cracking is a priority. This will take the most time.
+\end{itemize}
+
+\subsection{Gantt Chart}
+
+\includegraphics{gant.png}
+\section{Bibliography}
+
+\begin{enumerate}
+	\item "Brute Force Password Cracker": Montero, Massimiliano (2009) Oxid.it
+	\item "Password Cracking": wikipedia.org\textbackslash wiki\textbackslash Password\textunderscore cracking
+	\item "John the Ripper Benchmarks": openwall.info (2010-03-30)
+	\item "Password Memorability and Security": Yan J, Blackwell A, Anderson R, Grant A (2004) IEEE Security and Privacy Magazine Vol. 2
+	\item "Blowfish Source Code in C": Bruce Scheier (2008) polarssl.org\textbackslash blowfish-source-code
+	\item "SHA-1 Source Code in C": (2010) polarssl.org\textbackslash sha-1-source-code
+	\item "MD5 (RSA-Free) Library" (2002) sourceforge.net\textbackslash projects \textbackslash libmd5-rfc
+	\item "Password Manager": wikipedia.org\textbackslash wiki\textbackslash Password\textunderscore manager
+	\item "Hash Functions": Dan Berstein (2003) cse.yorku.ca
+	\item "Rainbow Tables": wikipedia.org\textbackslash wiki\textbackslash Rainbow\textunderscore table
+\end{enumerate}
+
+
+\end{document}
+
+
