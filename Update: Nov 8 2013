@@ -1,3 +1,9 @@
 Update: November 8th, 2013 - CSCE 499 Capstone
 
 This week I have continued my research and practiced various smaller C programs, such as basic File IO. I have also researched more about the implementation of the Brute Force method in password cracking. Next week I plan to implement one of the cryptographic hash functions and have it generate hashes. More code to come.
+
+
+Update: November 22nd, 2013 - CSCE 499 Capstone
+
+This week I have implemented a version of Blowfish in C that outputs hashes. Code to be posted soon. I plan to now implement
+the other encryption algorithms as mentioned in the Requirements Document; SHA-1 and MD5.
