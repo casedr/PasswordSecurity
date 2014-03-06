@@ -1,0 +1,23 @@
+Update: November 8th, 2013 - CSCE 499 Capstone
+
+This week I have continued my research and practiced various smaller C programs, such as basic File IO. I have also researched more about the implementation of the Brute Force method in password cracking. Next week I plan to implement one of the cryptographic hash functions and have it generate hashes. More code to come.
+
+
+Update: November 22nd, 2013 - CSCE 499 Capstone
+
+This week I have implemented a version of Blowfish in C that outputs hashes. Code to be posted soon. I plan to now implement
+the other encryption algorithms as mentioned in the Requirements Document; SHA-1 and MD5. Requirements document also uploaded.
+
+
+
+
+UPDATE: March 5th, 2014 - CSCE 499 Capstone
+
+Been a while hasn't it? Lot of things have been going on - so here is the update for today.
+No longer doing Blowfish - a fiestel cipher is not practical for the project. Thus the implementation that I had wrote
+previously will not be posted. (It didn't work well anyway.)
+
+Next up - code for MD5, SHA-1, and SHA-2 will be posted soon instead. Also uploaded the current (yet rough) Design Document.
+Will be adding to the document and overhauling sections for the final paper due in May. Next goal - get that code commited
+and posted Friday, along with the code for the Brute-Force Attack. This will be the focus for the technical presentation
+next Tuesday (March 11th).
